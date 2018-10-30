@@ -3,6 +3,33 @@
 Extract data from web pages using XPath and format into XML files.
 
 
+## Development
+
+### Requirements
+
+* [Git](https://git-scm.com/downloads) v2.0+
+* [Go](https://golang.org/dl/) v1.11+
+
+
+### Setup
+
+* `cd $GOPATH`
+* `git clone git@github.com:beporter/screfeed.git src/github.com/beporter/screfeed`
+* `cd src/github.com/beporter/screfeed`
+
+
+### Compiling
+
+* (Run once): `cd $GOPATH/src/github.com/beporter/screfeed`
+* Run: `go install && screfeed`
+
+
+### Tests
+
+TODO
+
+
+
 ## Design Notes:
 
 The goal is to be able to:
@@ -20,7 +47,7 @@ The goal is to be able to:
 	* Extraction `[token => //xpath]` pairs. Each pair consists of a name to identify it, and an xpath used to extract data from the fetched HTML content.
 	* Output format. (Must interpolate tokens into the provided formatting strings):
 		* Local xml filename and location to write to.
-		* Feed URL.
+		* Feed URL. (Typically the "source" URL.)
 		* Feed title.
 		* Feed description.
 		* Item title format.
@@ -51,7 +78,7 @@ The goal is to be able to:
 
 For the time being, this is mine: **All rights are reserved.**
 
-Granted, it's public on Github so I can't really expect to enforce that and nor would I try, but using Github is for my own convenience only and not implicit permission to copy or use any of this.
+Granted, it's public on Github so I can't really expect to enforce that and nor would I try, but using Github is for my own convenience.
 
 
 ### TODO
