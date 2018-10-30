@@ -3,11 +3,40 @@
 Extract data from web pages using XPath and format into XML files.
 
 
+## Usage
+
+In order to function, the app needs to know about the HTML pages you wish to scrape, and what [XPath](https://en.wikipedia.org/wiki/XPath) values to extract from those pages.
+
+
+### Source URLs
+
+Each source URL is paired with a number of xpath expressions.
+
+@TODO
+
+### Tokens
+
+The app uses pairs of `[token_name => //xpath/pattern]` to extract values from the HTML file and save them under the symbolic `token` name.
+
+
+#### Tools
+
+* Testing your XPath expressions: [xpather.com/](http://xpather.com/)
+
+
+### Format Strings
+
+When the app generates its output, it is able to combine the values loaded into your tokens into each output field. Tokens are sybmolized with percent signs: `%token_name%` will be replaced with the value found at that token's XPath.
+
+Example: `ItemBodyFormat = "<p><a href=\"%pageurl%\"><img src=\"%imgurl%\" alt=\"%title%\" style=\"width: 100%;\"/></a></p>"`
+
+
 ## Development
 
 ### Requirements
 
 * [Git](https://git-scm.com/downloads) v2.0+
+* [Bazaar](http://wiki.bazaar.canonical.com/Download) v2.6+
 * [Go](https://golang.org/dl/) v1.11+
 
 
@@ -16,17 +45,18 @@ Extract data from web pages using XPath and format into XML files.
 * `cd $GOPATH`
 * `git clone git@github.com:beporter/screfeed.git src/github.com/beporter/screfeed`
 * `cd src/github.com/beporter/screfeed`
+* `go get`
 
 
 ### Compiling
 
 * (Run once): `cd $GOPATH/src/github.com/beporter/screfeed`
-* Run: `go install && screfeed`
+* Run: `go run main.go`
 
 
 ### Tests
 
-TODO
+@TODO
 
 
 
@@ -57,6 +87,7 @@ The goal is to be able to:
 * If fetching a page fails, tool must not replace an existing xml file. (Poor person's caching is to leave the old generated file in place.)
 * Should require as few external dependencies as possible.
 * If at all possible, should be distributable as a single executable binary file. (not _that_ important for myself though.)
+* Ideally tool should be able to _append_ "new" items to an existing output XML file.
 
 
 ### Architecture
